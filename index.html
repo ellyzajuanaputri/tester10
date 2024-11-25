@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form & Katalog Barang</title>
+    <link rel="stylesheet" href="./pertemuan10.css">
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        const pbo = {
+            // Model untuk database
+            model: {
+                mahasiswa: [
+                    { username: 'ellyza', pin: 'ellyza123' },
+                    { username: 'juana', pin: 'juana123' },
+                    { username: 'putri', pin: 'putri123' },
+                ],
+                katalog: [
+                    { nama: 'Anting', harga: '20.000' },
+                    { nama: 'Bando', harga: '6.000' },
+                    { nama: 'Cincin', harga: '72.000' },
+                    { nama: 'Kalung', harga: '123.000' },
+                ],
+            },
+            // View untuk tampilan
+            view: {
+                signform: function () {
+                    return `
+                        <div class="input-form">
+                            Username: <input type='text' id='username'><br/>
+                            Pin: <input type='password' id='pin'><br/>
+                            <button id='login'>Login</button>
+                            <button id='cancel'>Cancel</button>
+                        </div>
+                    `;
+                },
+                katalog: function () {
+                    const items = pbo.model.katalog.map(
+                        (item) => `
+                            <div class="katalog-item">
+                                <h3>${item.nama}</h3>
+                                <p>Harga: Rp${item.harga}</p>
+                            </div>
+                        `
+                    ).join('');
+                    return `<div class="katalog-container">${items}</div>`;
+                },
+            },
+            // Controller untuk perlakuan terhadap view dan database
+            controller: {
+                init: function () {
+                    const app = document.getElementById('app');
+                    app.innerHTML = pbo.view.signform();
+                    
+                    document.getElementById('login').addEventListener('click', this.signin);
+                    document.getElementById('cancel').addEventListener('click', this.signout);
+                },
+                
+                signin: function () {
+                    const username = document.getElementById('username').value;
+                    const pin = document.getElementById('pin').value;
+
+                    const userFound = pbo.model.mahasiswa.find(
+                        (user) => user.username === username && user.pin === pin
+                    );
+
+                    if (userFound) {
+                        alert('Login berhasil!');
+                        document.getElementById('app').innerHTML = pbo.view.katalog();
+                    } else {
+                        alert('Username atau Pin salah!');
+                    }
+                },
+                
+                signout: function () {
+                    document.getElementById('username').value = '';
+                    document.getElementById('pin').value = '';
+                },
+            },
+        };
+
+        // Inisialisasi programnya
+        pbo.controller.init();
+    </script>
+</body>
+</html>
