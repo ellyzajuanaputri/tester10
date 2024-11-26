@@ -31,8 +31,11 @@
             renderLoginForm: function () {
                 return `
                     <div class="input-form">
-                        Username: <input type='text' id='username'><br/>
-                        Pin: <input type='password' id='pin'><br/>
+                        <h2>Login</h2>
+                        <label for="username">Username:</label>
+                        <input type='text' id='username' placeholder="Enter your username"><br/>
+                        <label for="pin">Pin:</label>
+                        <input type='password' id='pin' placeholder="Enter your pin"><br/>
                         <button id='login'>Login</button>
                         <button id='cancel'>Cancel</button>
                     </div>
@@ -43,7 +46,6 @@
                     <div class="catalog-item" data-id="${item.id}">
                         <img src="${item.image}" alt="${item.name}">
                         <h3>${item.name}</h3>
-                        <p>${item.description}</p>
                         <p><strong>${item.price}</strong></p>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>
@@ -63,12 +65,12 @@
                         <p>${item.price}</p>
                     </div>
                 `).join('');
-                const total = model.cart.reduce((sum, item) => sum + parseFloat(item.price.replace('$', '')), 0).toFixed(2);
+                const total = model.cart.reduce((sum, item) => sum + parseFloat(item.price.replace('$', '').replace('.', '')), 0).toFixed(2);
                 return `
                     <div class="cart">
                         <h2>Your Cart</h2>
                         <div class="items">${items}</div>
-                        <p><strong>Total: $${total}</strong></p>
+                        <p><strong>Total: Rp${total}</strong></p>
                         <button id="checkout">Checkout</button>
                         <button id="clear-cart">Clear Cart</button>
                     </div>
@@ -126,7 +128,7 @@
 
                 if (item) {
                     model.cart.push(item); // Add item to cart
-                    alert(${item.name} added to your cart!);
+                    alert(`${item.name} added to your cart!`);
                 }
             },
 
