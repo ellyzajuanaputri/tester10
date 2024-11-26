@@ -18,75 +18,68 @@ body {
     text-align: center;
 }
 
-.katalog-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+.input-form h2 {
+    margin-bottom: 20px;
+}
+
+.input-form label {
+    margin-top: 10px;
+    display: block;
+}
+
+.input-form input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.input-form button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ADD8E6;
+    color: white;
+    cursor: pointer;
+}
+
+.input-form button:hover {
+    background-color: #FFEBCD;
+}
+
+.catalog {
     padding: 20px;
     background-color: #FFF8DC;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 20px auto;
 }
 
-.katalog-item {
+.catalog h2 {
+    text-align: center;
+}
+
+.catalog-item {
     background-color: #ADD8E6;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 200px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.katalog-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-}
-
-.katalog-item h3 {
-    font-size: 18px;
-    margin: 10px 0;
-    color: #00008B;
-}
-
-.katalog-item p {
-    font-size: 16px;
-    color: #555;
-}
-
-input {
-    width: 90%;
-    max-width: 90%;
-    padding: 10px;
     margin: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
+    text-align: center;
 }
 
-button {
-    width: 48%;
+.catalog-item img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.catalog-item button {
     padding: 10px;
-    margin: 10px 1%;
+    margin-top: 10px;
     border: none;
     border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: #ADD8E6;
-    color: white;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #FFEBCD;
-    transform: translateY(-3px);
-}
-
-button#cancel {
-    background-color: #DCDCDC;
-}
-
-button#cancel:hover {
-    background-color: #FFF0F5;
-}
+    background-color: #
